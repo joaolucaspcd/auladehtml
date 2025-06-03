@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabela de Menções e Faltas</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #84d0f8;
+      color: white;
+    }
+
+    caption {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Exercício: Tabela de Menções e Faltas dos Alunos</h2>
+  <h3>Turma: 1º Ano do MTec em Informática para Internet</h3>
+  <p><strong>Relatório de Menções e Faltas</strong></p>
+
+  <table>
+    <tr>
+      <th rowspan="3">Aluno</th>
+      <th rowspan="3">Disciplina</th>
+      <th colspan="8">Bimestre</th>
+    </tr>
+    <tr>
+      <th colspan="2">1º Bimestre</th>
+      <th colspan="2">2º Bimestre</th>
+      <th colspan="2">3º Bimestre</th>
+      <th colspan="2">4º Bimestre</th>
+    </tr>
+    <tr>
+      <th>Menção</th><th>Faltas</th>
+      <th>Menção</th><th>Faltas</th>
+      <th>Menção</th><th>Faltas</th>
+      <th>Menção</th><th>Faltas</th>
+    </tr>
+
+    <!-- João Silva -->
+    <tr>
+      <td rowspan="3">João Silva</td>
+      <td>Matemática</td><td>MB</td><td>2</td><td>B</td><td>0</td><td>MB</td><td>1</td><td>MB</td><td>0</td>
+    </tr>
+    <tr>
+      <td>Português</td><td>B</td><td>1</td><td>B</td><td>2</td><td>MB</td><td>0</td><td>B</td><td>1</td>
+    </tr>
+    <tr>
+      <td>História</td><td>MB</td><td>0</td><td>B</td><td>1</td><td>B</td><td>1</td><td>B</td><td>0</td>
+    </tr>
+
+    <!-- Maria Oliveira -->
+    <tr>
+      <td rowspan="3">Maria Oliveira</td>
+      <td>Matemática</td><td>R</td><td>3</td><td>B</td><td>2</td><td>B</td><td>4</td><td>B</td><td>2</td>
+    </tr>
+    <tr>
+      <td>Português</td><td>MB</td><td>1</td><td>MB</td><td>0</td><td>R</td><td>2</td><td>MB</td><td>1</td>
+    </tr>
+    <tr>
+      <td>História</td><td>B</td><td>2</td><td>B</td><td>1</td><td>MB</td><td>4</td><td>MB</td><td>1</td>
+    </tr>
+  </table>
+
+  <p>* Menções e faltas são baseadas no desempenho dos alunos durante o ano letivo.</p>
+
+</body>
+</html>
