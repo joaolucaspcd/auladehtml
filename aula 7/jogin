@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mini Jogo de Basquete</title>
+<style>
+  body {
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    user-select: none;
+  }
+  .game-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background: linear-gradient(to top, #008000 0%, #004400 100%);
+    border-radius: 12px;
+    box-shadow: 0 0 20px #000;
+    overflow: hidden;
+  }
+  .hoop {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 40px;
+    border: 5px solid orange;
+    border-bottom: none;
+    border-radius: 60px 60px 0 0;
+    box-shadow: 0 0 10px orange;
+  }
+  .net {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translateX(-50%);
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    border-radius: 0 0 40px 40px;
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px white;
+  }
+  .ball {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at center, #FF7F27 0%, #B35400 70%);
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 10px #FF9C47,
+      0 4px 6px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: bottom 0.6s ease-out, left 0.6s ease-out;
+  }
+  .message {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 0 0 5px #FFD700;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="message" id="message"></div>
+    <div class="hoop"></div>
+    <div class="net"></div>
+    <div class="ball" id="ball" title="Clique para arremessar"></div>
+  </div>
+
+<script>
+  const ball = document.getElementById('ball');
+  const message = document.getElementById('message');
+  let shooting = false;
+
+  ball.addEventListener('click', () => {
+    if (shooting) return; // Evita arremessos simultâneos
+
+    shooting = true;
+    message.textContent = '';
+    
+    // Animar a bola para cima e para a direita
+    ball.style.transition = 'bottom 0.6s ease-out, left 0.6s ease-out';
+    ball.style.bottom = '450px';
+    ball.style.left = '60%';
+
+    // Após a animação, verifica se entrou na cesta
+    setTimeout(() => {
+      // Simula a chance da bola entrar
+      if (Math.random() > 0.4) {
+        message.textContent = '🎉 Bola na cesta!';
+        ball.style.bottom = '50px';
+        ball.style.left = '50%';
+      } else {
+        message.textContent = '😞 Quase lá!';
+        // Bola cai fora da cesta (um pouco para a esquerda)
+        ball.style.bottom = '50px';
+        ball.style.left = '40%';
+      }
+      // Após 1.2s volta à posição inicial
+      setTimeout(() => {
+        ball.style.transition = 'bottom 0.4s ease-in, left 0.4s ease-in';
+        ball.style.bottom = '50px';
+        ball.style.left = '50%';
+        shooting = false;
+        message.textContent = '';
+      }, 1200);
+    }, 600);
+  });
+</script>
+</body>
+</html>
